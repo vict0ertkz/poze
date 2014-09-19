@@ -29,10 +29,9 @@
  }
  function bkgpos(){
  var qwe=document.getElementById('benz');
- 
- var az1= document.getElementById('azuri').value;
- var ax1= document.getElementById('xamp').value;
- qwe.style.webkitBackgroundPosition='100px,100px';
+ var az1=document.getElementById('azuri').value;
+ var ax1=document.getElementById('xamp').value;
+ qwe.style.webkitBackgroundPosition=parseInt(az1)+'%';
  qwe.style.webkitBackgroundSize= parseInt(ax1)+'%';
  
  }
