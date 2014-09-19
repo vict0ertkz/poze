@@ -1,0 +1,54 @@
+<html>
+<head>
+
+<script type="text/javascript">
+
+ function onLoad(){
+ interval = setInterval("motor()",1);
+ interval = setInterval("bkgpos()",1);
+ }
+
+	    
+
+
+
+ function motor(){
+ document.addEventListener('devicelight', function(event) {
+        var lux = event.value;
+		if (lux ==0) 
+		lux= 1;
+       var lux2 = Math.log(lux) / Math.log(2);
+	  var lux3 = lux2.toFixed(0);
+	
+	  document.getElementById('grade').value= lux3;
+	  });  
+ var val1= document.getElementById('grade').value;
+ var abc= document.getElementById('benz');
+    abc.style.webkitTransform = "rotate("+(parseInt(val1)*10)+"deg)" ;
+  
+ }
+ function bkgpos(){
+ var qwe=document.getElementById('benz');
+ 
+ var az1= document.getElementById('azuri').value;
+ var ax1= document.getElementById('xamp').value;
+ qwe.style.webkitBackgroundPosition= parseInt(az1)+'px';
+ qwe.style.webkitBackgroundSize= parseInt(ax1)+'%';
+ 
+ }
+ 
+</script>
+</head>
+<body onload="onLoad()">
+<input type="text" id="grade">grade
+<br>
+<input type="text" id="azuri">pozitie
+<br>
+<input type="text" id="xamp"> marime
+<div id="benz" style="position:relative;background:url(iris2.png);width:100px;height:200px">
+
+hfgd
+</div>
+<button type="button" onclick="motor()">apasa-ma</button>
+</body>
+</html>
