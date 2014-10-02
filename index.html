@@ -19,10 +19,9 @@
     // onSuccess: Get a snapshot of the current acceleration
     //
     function onSuccess(acceleration) {
-        alert('Acceleration X: ' + acceleration.x + '\n' +
-              'Acceleration Y: ' + acceleration.y + '\n' +
-              'Acceleration Z: ' + acceleration.z + '\n' +
-              'Timestamp: '      + acceleration.timestamp + '\n');
+        document.getElementBiId('1x').value=acceleration.x;
+        document.getElementBiId('1y').value=acceleration.y;
+        document.getElementBiId('1z').value=acceleration.z;
     }
 
     // onError: Failed to get the acceleration
@@ -36,5 +35,9 @@
   <body>
     <h1>Example</h1>
     <p>getCurrentAcceleration</p>
+    <input type="text" id="1x">
+    <input type="text" id="1y">
+    <input type="text" id="1z">
+    
   </body>
 </html>
