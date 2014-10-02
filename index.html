@@ -13,23 +13,14 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-    }
-
-    // onSuccess: Get a snapshot of the current acceleration
-    //
-    function onSuccess(acceleration) {
+        navigator.accelerometer.getCurrentAcceleration();
         document.getElementBiId('1x').value=acceleration.x;
         document.getElementBiId('1y').value=acceleration.y;
         document.getElementBiId('1z').value=acceleration.z;
-    }
-
-    // onError: Failed to get the acceleration
+}
+    // onSuccess: Get a snapshot of the current acceleration
     //
-    function onError() {
-        alert('onError!');
-    }
-
+    
     </script>
   </head>
   <body>
@@ -38,6 +29,6 @@
     <input type="text" id="1x">
     <input type="text" id="1y">
     <input type="text" id="1z">
-    <button type="button" onclick="onSucces()">apasa</button>
+    <button type="button" onclick="onDeviceReady()">apasa</button>
   </body>
 </html>
