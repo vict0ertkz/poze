@@ -1,54 +1,40 @@
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <title>Acceleration Example</title>
 
-<script type="text/javascript">
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
- function onLoad(){
- interval = setInterval("motor()",1);
- interval = setInterval("bkgpos()",1);
- }
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-	    
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    }
 
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    }
 
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
 
- function motor(){
- document.addEventListener('devicelight', function(event) {
-        var lux = event.value;
-		if (lux ==0) 
-		lux= 1;
-       var lux2 = Math.log(lux) / Math.log(2);
-	  var lux3 = lux2.toFixed(0);
-	
-	  document.getElementById('grade').value= lux3;
-	  });  
- var val1= document.getElementById('grade').value;
- var abc= document.getElementById('benz');
-    abc.style.webkitTransform = "rotate("+(parseInt(val1)*10)+"deg)" ;
-  
- }
- function bkgpos(){
- var qwe=document.getElementById('benz');
- var az1=document.getElementById('azuri').value;
- var ax1=document.getElementById('xamp').value;
- qwe.style.webkitBackgroundPosition='100px 100px';
- qwe.style.webkitBackgroundSize= parseInt(ax1)+'% '+'100%';
- 
- }
- 
-</script>
-</head>
-<body onload="onLoad()">
-<input type="text" id="grade">grade
-<br>
-<input type="text" id="azuri">pozitie
-<br>
-<input type="text" id="xamp"> marime
-<div id="benz" style="position:relative;background-origin:initial;background:url(iris2.PNG);background-repeat:no-repeat;
-   width:200px;height:200px">
-
-hfgd
-</div>
-<button type="button" onclick="motor()">apasa-ma</button>
-</body>
+    </script>
+  </head>
+  <body>
+    <h1>Example</h1>
+    <p>getCurrentAcceleration</p>
+  </body>
 </html>
